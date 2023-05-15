@@ -1,15 +1,23 @@
-let listaContactos = ["JUAN PEREZ", "JULIANA TAMAYO", "ANDRES RESTREPO"];
+let listaContactos = [];
 
-function agregarNuevoContacto(nombreApellido){
-  let nombreApellidoMay =nombreApellido.toUpperCase();
-  //console.log(nombreApellido)
-  listaContactos.push(nombreApellidoMay);
+function agregarNuevoContacto(nombres,apellidos, telefono, ciudad, direccion){
+  let nombresMay = nombres.toUpperCase();
+  let apellidosMay = apellidos.toUpperCase();
+  let objeto = { id: new Date().getTime(),
+                 nombres: nombresMay,
+                 apellidos: apellidosMay,
+                 telefono: telefono,
+                 ubicacion: {ciudad: ciudad,
+                             direccion: direccion
+                            }
+                }
+
+  listaContactos.push(objeto);
   
 }
 
-function borrarContacto(nombre){
-  let nombreMay = nombre.toUpperCase();
-  const index = listaContactos.indexOf(nombreMay);
+function borrarContacto(id){
+  const index = listaContactos.findIndex(listaC => listaC.id === id);
   listaContactos.splice(index,1);
 }
 
