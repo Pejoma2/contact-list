@@ -24,3 +24,16 @@ function borrarContacto(id){
 function imprimirContactos(){
   console.log(listaContactos)
 }
+
+function actualizarContacto(id, key, valor){
+    const index = listaContactos.findIndex(listaC => listaC.id === id);
+
+    if(index !== -1){
+
+        if(key === "ciudad" || key === "direccion"){
+            listaContactos[index].ubicacion[key] = valor;
+        }else{
+            listaContactos[index][key] = valor;
+        }
+    }
+}
